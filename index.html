@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header><b>TODOList</b></header>
+    <hr>
+        <form action="#" class="form" method="post">
+            <div class="search">
+        <span><i class="fa fa-search"></i></span>
+        <input type="search" placeholder="search by title">
+                <select id="windowOne">
+            <option value="all" hidden>all</option>
+            <option value="open">open</option>
+            <option value="done">done</option>
+                </select>
+                <select id="windowTwo">
+            <option value="all" hidden>all</option>
+            <option value="high">high</option>
+            <option value="normal">normal</option>
+            <option value="low">low</option>
+                </select>
+                <label for="popupCheckboxOne" class="popup-shower" id="myBtn">Create</label>
+            </div>
+        </form>
+
+    <div class="popup-wrapper">
+        <input type="checkbox" class="popup-checkbox" id="popupCheckboxOne">
+        <div class="popup" id="myModal">
+            <form class="popup-content" id="form" name="form" action="#" method="get">
+                <p>Title:</p>
+                <input type="text" name="title" placeholder="Title"><br>
+                <p>Description:</p>
+                <textarea name="description" cols="33" rows="5"></textarea><br>
+                <p>Priority:</p><select name="prior">
+                <option value="high" hidden>High</option>
+                <option value="normal">Normal</option>
+                <option value="low">Low</option>
+                </select><br>
+               <input type="button" value="Cancel" class="close">
+               <input type="button"  value="Save" class="addBlock" onclick="elem()">
+        </form>
+        </div>
+    </div>
+
+<script>
+    let modal = document.getElementById("myModal");
+    let exit = document.getElementsByClassName("close")[0];
+    let btn = document.getElementById("myBtn");
+    exit.onclick = function() {
+        modal.style.display = "none";
+    };
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+  let block = document.getElementsByClassName('addBlock')[0];
+    function elem() {
+        modal.style.display = "none";
+         let form = document.getElementById("form");
+         let TestVar = form.title.value;
+         let TestVar1 = form.description.value;
+         let TestVar2 = form.prior.value;
+         /*let button = form.value("...");*/
+        createBlock(TestVar,TestVar1,TestVar2)
+    }
+
+    function createBlock(data1,data2,data3){
+       let newDiv = document.createElement('div');
+      let newBut = document.createElement('BUTTON');
+      let text = document.createTextNode('...');
+        newBut.appendChild(text);
+        newBut.setAttribute("class","buttons");
+        newDiv.className = 'fields';
+       let arr = [this.data1,this.data2,this.data3];
+       for(let i = 0; i < 1; i++) {
+           let data = newDiv.innerHTML += "<strong>"
+               + data1 + "</strong><br/><br/><br/><strong>"
+               + data2 + "</strong><br/><br/><br/><strong style='border:2px dashed;padding:5px;border-radius:7px;float:left'>"
+               + data3 + "</strong>";
+       }
+           document.body.append(newDiv);
+          newDiv.appendChild(newBut);
+    }
+
+
+</script>
+
+
+<footer>
+    <div class="end">
+        <hr>
+        <p>Elizabeth Honcharenko</p>
+    </div>
+</footer>
+</body>
+</html>
